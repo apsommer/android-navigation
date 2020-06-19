@@ -50,19 +50,18 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // navigate to "destination one" via the NavController
+        // navigate directly to "one" using the NavController
         val button = view.findViewById<Button>(R.id.navigate_destination_button)
         button?.setOnClickListener {
             findNavController().navigate(R.id.flow_step_one_dest, null, options)
             // pass bundle with ... Navigation.createNavigateOnClickListener(int id, Bundle bundle)
         }
 
+        // navigate from "one" to "two" using the "next action" defined in graph/one
+        // navigating via actions is preferred as it allows the options to be defined in XML rather than programmatically
+        view.findViewById<Button>(R.id.navigate_action_button)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_action, null))
 
-        //TODO STEP 7.2 - Update the OnClickListener to navigate using an action
-//        view.findViewById<Button>(R.id.navigate_action_button)?.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.next_action, null)
-//        )
-        //TODO END STEP 7.2
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -40,7 +40,7 @@ class DeepLinkAppWidgetProvider : AppWidgetProvider() {
         args.putString("myarg", "From Widget")
         // TODO STEP 10 - construct and set a PendingIntent using DeepLinkBuilder
 //        val pendingIntent = NavDeepLinkBuilder(context)
-//                .setGraph(R.navigation.mobile_navigation)
+//                .setGraph(R.navigation.graph)
 //                .setDestination(R.id.deeplink_dest)
 //                .setArguments(args)
 //                .createPendingIntent()

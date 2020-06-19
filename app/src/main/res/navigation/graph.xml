@@ -37,6 +37,9 @@
         android:id="@+id/flow_step_one_dest"
         android:name="com.example.android.codelabs.navigation.FlowStepFragment"
         tools:layout="@layout/flow_step_one_fragment">
+
+        <!-- safe args bundle -->
+        <!-- gradle plugin (project and app) generates FlowStepFramentArgs.java -->
         <argument
             android:name="flowStepNumber"
             app:argType="integer"

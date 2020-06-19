@@ -18,7 +18,10 @@ package com.example.android.codelabs.navigation
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 /**
  * Fragment used to show how to navigate to another destination
@@ -36,12 +39,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO STEP 5 - Set an OnClickListener, using Navigation.createNavigateOnClickListener()
-//        val button = view.findViewById<Button>(R.id.navigate_destination_button)
-//        button?.setOnClickListener {
-//            findNavController().navigate(R.id.flow_step_one_dest, null)
-//        }
-        //TODO END STEP 5
+        // navigate to "destination one" via the NavController
+        val button = view.findViewById<Button>(R.id.navigate_destination_button)
+        button?.setOnClickListener {
+            findNavController().navigate(R.id.flow_step_one_dest, null)
+        }
+        // Navigation.createNavigateOnClickListener(int id, Bundle bundle) to pass bundle to destination
 
         //TODO STEP 6 - Set NavOptions
 //        val options = navOptions {

@@ -29,10 +29,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 /**
- * A simple activity demonstrating use of a NavHostFragment with a navigation drawer.
+ * A simple activity demonstrating use of a NavHostFragment with a navigation navigation.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.drawer)
+        setContentView(R.layout.navigation)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -81,10 +84,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavMenu(navController: NavController) {
-        // TODO STEP 9.3 - Use NavigationUI to set up Bottom Nav
-//        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-//        bottomNav?.setupWithNavController(navController)
-        // TODO END STEP 9.3
+
+        // connect the controller to XML navigation
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        bottomNav?.setupWithNavController(navController)
     }
 
     private fun setupNavigationMenu(navController: NavController) {
@@ -101,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         // TODO STEP 9.6 - Have NavigationUI handle what your ActionBar displays
 //        // This allows NavigationUI to decide what label to show in the action bar
 //        // By using appBarConfig, it will also determine whether to
-//        // show the up arrow or drawer menu icon
+//        // show the up arrow or navigation menu icon
 //        setupActionBarWithNavController(navController, appBarConfig)
         // TODO END STEP 9.6
     }
@@ -121,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     // settings icon is click
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        // search through nav graph for this item id
+        // search through nav_menu graph for this item id
         return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
 
                 // this menu item is not meant to navigate
@@ -130,8 +133,8 @@ class MainActivity : AppCompatActivity() {
 
     // TODO STEP 9.7 - Have NavigationUI handle up behavior in the ActionBar
 //    override fun onSupportNavigateUp(): Boolean {
-//        // Allows NavigationUI to support proper up navigation or the drawer layout
-//        // drawer menu, depending on the situation
+//        // Allows NavigationUI to support proper up navigation or the navigation layout
+//        // navigation menu, depending on the situation
 //        return findNavController(R.id.my_nav_host_fragment).navigateUp(appBarConfiguration)
 //    }
     // TODO END STEP 9.7

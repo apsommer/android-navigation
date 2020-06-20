@@ -34,7 +34,7 @@
             </intent-filter>
 
             <!-- TODO STEP 11.2 -->
-            <!--<nav-graph android:value="@navigation/graph" />-->
+            <!--<nav_menu-graph android:value="@navigation/graph" />-->
             <!-- TODO END STEP 11.2-->
 
         </activity>

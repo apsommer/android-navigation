@@ -13,6 +13,8 @@
   -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- ids match items in nav menu -->
+
     <!-- home -->
     <item
         android:id="@id/home_dest"

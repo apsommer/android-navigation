@@ -25,8 +25,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.onNavDestinationSelected
 import com.google.android.material.navigation.NavigationView
 
 /**
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.navigation_activity)
+        setContentView(R.layout.drawer)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -110,22 +112,20 @@ class MainActivity : AppCompatActivity() {
         // The NavigationView already has these same navigation items, so we only add
         // navigation items to the menu here if there isn't a NavigationView
         if (navigationView == null) {
-            menuInflater.inflate(R.menu.overflow_menu, menu)
+            menuInflater.inflate(R.menu.overflow, menu)
             return true
         }
         return retValue
     }
 
+    // settings icon is click
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-        // TODO STEP 9.2 - Have Navigation UI Handle the item selection - make sure to delete
-        //  the old return statement above
-//        // Have the NavigationUI look for an action or destination matching the menu
-//        // item id and navigate there if found.
-//        // Otherwise, bubble up to the parent.
-//        return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
-//                || super.onOptionsItemSelected(item)
-        // TODO END STEP 9.2
+
+        // search through nav graph for this item id
+        return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
+
+                // this menu item is not meant to navigate
+                || super.onOptionsItemSelected(item)
     }
 
     // TODO STEP 9.7 - Have NavigationUI handle up behavior in the ActionBar

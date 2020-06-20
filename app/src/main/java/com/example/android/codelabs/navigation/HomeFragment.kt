@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 
@@ -70,7 +69,8 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // these fragment toolbar items are merged into existing activity toolbar items
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu, menu)
+        inflater.inflate(R.menu.main, menu)
     }
 }

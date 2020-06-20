@@ -61,7 +61,6 @@ class HomeFragment : Fragment() {
         // navigating via actions is preferred as it allows the options to be defined in XML rather than programmatically
         view.findViewById<Button>(R.id.navigate_action_button)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_action, null))
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -19,6 +19,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'androidx.navigation.safeargs.kotlin' // safe args
 
 android {
+
+    // default configuration supplied by Android Studio
     compileSdkVersion 29
     defaultConfig {
         applicationId 'com.example.android.codelabs.navigation'
@@ -29,6 +31,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // build types refers to signing certificate
     buildTypes {
         release {
             minifyEnabled false
@@ -39,10 +42,36 @@ android {
             testCoverageEnabled false
         }
     }
-    dataBinding {
-        enabled = true
+
+    // generated classes that bind XML layouts
+//    dataBinding {
+//        enabled = true
+//    }
+
+    buildFeatures {
+        dataBinding = true;
     }
+
+//    android.buildFeatures.dataBinding
+
+    // version of whitelabel app
+    flavorDimensions 'version'
     productFlavors {
+
+        // base whitelabel unadorned app is code base in app/src/main
+        // create new directories app/src/EA and app/src/EC and put dimension specific codebase additions there
+
+        // EA
+        EA {
+            dimension = 'version'
+            applicationId = "com.example.android.codelabs"
+        }
+
+        // EC
+        EC {
+            dimension = 'version'
+            applicationId = "com.example.android.codelabs"
+        }
     }
 
     lintOptions {

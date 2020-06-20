@@ -59,8 +59,15 @@ class HomeFragment : Fragment() {
 
         // navigate from "one" to "two" using the "next action" defined in graph/one
         // navigating via actions is preferred as it allows the options to be defined in XML rather than programmatically
-        view.findViewById<Button>(R.id.navigate_action_button)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_action, null))
+//        view.findViewById<Button>(R.id.navigate_action_button)
+//                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_action, null))
+
+        // alternate method to navigate with action that uses generated Directions class
+        val buttonD = view.findViewById<Button>(R.id.navigate_action_button)
+        buttonD.setOnClickListener {
+            val action = HomeFragmentDirections.nextAction(1)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

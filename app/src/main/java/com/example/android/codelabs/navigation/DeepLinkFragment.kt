@@ -32,8 +32,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 /**
- * Fragment used to show how to deep link to a destination
+ * Fragment used to show how to deep link to a destination.
  */
+
+// fragment destination is unconnected from graph to illustrate the framework handling back navigation to the defined
+// starting fragment by traversing through a simulated backstack (since no user path exists to get here)
 class DeepLinkFragment : Fragment() {
     override fun onCreateView(
             inflater: LayoutInflater,

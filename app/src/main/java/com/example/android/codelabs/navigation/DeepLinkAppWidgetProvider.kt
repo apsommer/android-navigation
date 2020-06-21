@@ -21,11 +21,13 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.os.Bundle
 import android.widget.RemoteViews
+import androidx.navigation.NavDeepLinkBuilder
 
 /**
  * App Widget that deep links you to the [DeepLinkFragment].
  */
 class DeepLinkAppWidgetProvider : AppWidgetProvider() {
+    
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -36,17 +38,23 @@ class DeepLinkAppWidgetProvider : AppWidgetProvider() {
             R.layout.deep_link_appwidget
         )
 
+        // create bundle for pending intent
         val args = Bundle()
-        args.putString("myarg", "From Widget")
-        // TODO STEP 10 - construct and set a PendingIntent using DeepLinkBuilder
-//        val pendingIntent = NavDeepLinkBuilder(context)
-//                .setGraph(R.navigation.graph)
-//                .setDestination(R.id.deeplink_dest)
-//                .setArguments(args)
-//                .createPendingIntent()
-//
-//        remoteViews.setOnClickPendingIntent(R.id.deep_link_button, pendingIntent)
-        // TODO END STEP 10
+        args.putString("myarg", "args passed from widget click")
+
+        // add nav graph and dest to pending intent
+        val pendingIntent = NavDeepLinkBuilder(context)
+                .setGraph(R.navigation.graph)
+                .setDestination(R.id.deeplink_dest)
+                .setArguments(args)
+                .createPendingIntent()
+
+        // can also use NavController createDeepLink()
+
+        // onclick listener for entire widget
+        remoteViews.setOnClickPendingIntent(R.id.deep_link_button, pendingIntent)
+
+        // broadcast widget update to all active and future widgets
         appWidgetManager.updateAppWidget(appWidgetIds, remoteViews)
     }
 }

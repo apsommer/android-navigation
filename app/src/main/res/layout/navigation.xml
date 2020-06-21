@@ -12,7 +12,8 @@
   ~ limitations under the License.
   -->
 
-<!-- separate navigation layout files are defined relative to device display specs -->
+<!-- separate navigation layout files are defined relative to device display -->
+<!-- base layout for short height < 470dp split screen mode so drawer hides items to conserve space -->
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,6 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
